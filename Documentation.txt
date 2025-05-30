@@ -1,0 +1,8 @@
+npm run build       - created build files 
+remove the name and homepage from package.json 
+npx serve -s build  - replicaes how build would look , locally 
+npm run deploy  - after checking if output is righ t, use this to deploy 
+
+
+https://github.com/hpv333/blog-build/settings/pages 
+FOLLOW THIS SITE TO DEPLOY 

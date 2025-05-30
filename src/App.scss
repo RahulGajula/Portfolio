@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$base-theme-dollar: #f4a261; // Updated to an orange-based color
+
+
+
+:root {
+  // Core Theme Colors
+  --base-theme: #194083;                    // Main orange theme color
+  --base-theme-light: #fff4eb;              // Light orange shade
+  --base-theme-dark: #2b1471;               // Dark orange shade
+
+  // Background Gradients
+  --bg-gradient-light: #95bcdf;             // Matches text-amber-50
+  --bg-gradient-dark: #404fa7;              // Matches to-orange-200
+
+  // Font Colors
+  --base-theme-font-color-dark: #0c1a3f;    // Dark font color
+  --base-theme-font-color-light: #ffe8d6;   // Light font color
+
+  // Text & Accent
+  --primary-color: #2343c2;                 // Matches text-orange-700
+  --primary-text: #2a1a6a;                  // Matches text-orange-900
+  --accent-color: #166df9;                  // Matches text-orange-500
+  --heading-font-family: "Georgia, serif";
+  --body-font-family:"Merriweather", serif;
+
+  // Effects
+  --hover-transition: all 0.3s ease;
+  --hover-transform: translateY(-0.5rem);
+  --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+;.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.content-wrapper {
+  margin-top: 100px;
+  height: 100vh;
+  overflow: hidden;
+ // or padding-top: 80px;
+  @media (max-width: 768px) {
+    margin-top: 124px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(101, 48, 48);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.image-list-item-bar-title {
+  white-space: pre-line; /* This will render the newline character */
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  width: 100vw;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.scroll-section {
+  flex: 0 0 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow-y: auto; // In case your content is taller than 100vh
+  background: linear-gradient(to left, var(--base-theme-light), var(--bg-gradient-dark));
+}

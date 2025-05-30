@@ -1,0 +1,45 @@
+.profile-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Width and height will be applied inline */
+}
+
+.gold-border {
+  position: absolute;
+  width: 84%;
+  height: 84%;
+  border-radius: 90% 50% 70% 40% / 60% 90% 40% 90%;
+  border: 4px solid #c0a265;
+  z-index: 7;
+  /* Transform will be applied inline for responsiveness */
+}
+
+/* Media queries for border thickness */
+@media (max-width: 767px) {
+  .gold-border {
+    border-width: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gold-border {
+    border-width: 2px;
+  }
+}
+
+.profile-frame {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+  z-index: 3;
+  border-radius: 70% 50% 70% 40% / 60% 40% 40% 90%;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
