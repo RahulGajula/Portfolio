@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Skills.css';
 
-// Import your images directly
 import abc from "../images/abc.png";
 import Donna_3_cut from "../images/Donna_3_cut.jpeg";
 
@@ -10,23 +9,20 @@ const timelineData = [
     date: "Sep 2021 – Apr 2023",
     title: "Data Analyst",
     company: "Capgemini – Bengaluru, India",
+    description: [
+      "Analyzed large-scale datasets for Unilever using Databricks, Data Factory, and Data Lake, boosting operational efficiency by 25%.",
+      "Developed interactive Power BI dashboards for real-time executive insights, enhancing decision-making by 40%.",
+      "Built and optimized ETL pipelines, reducing data processing time by 30% and improving data accuracy.",
+      "Implemented advanced data validation, reducing reporting errors by 45%.",
+      "Conducted statistical analysis to reveal customer behavior trends, leading to a 20% marketing ROI increase.",
+      "Collaborated across teams to translate business requirements into insightful reports and data frameworks.",
+      "Automated reports with Python and Scala scripts, saving 15+ hours per week.",
+      "Integrated CI/CD practices to streamline analytics pipeline deployments."
+    ]
   }
 ];
-const itemData = []
-// const itemData = [
-//   {
-//     img: abc,
-//     title: "text-behind-image",
-//     author: "Rexon Wong's",
-//     link: "https://textbehindimage.rexanwong.xyz/",
-//   },
-//   {
-//     img: Donna_3_cut,
-//     title: "Donna AI",
-//     author: "Mobiversite",
-//     link: "https://www.musicdonna.com/",
-//   },
-// ];
+
+const itemData = [];
 
 const WorkExperience = () => {
   const [visibleItems, setVisibleItems] = useState([]);
@@ -34,8 +30,6 @@ const WorkExperience = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
-    // Staggered animation effect for timeline items
     timelineData.forEach((_, index) => {
       setTimeout(() => {
         setVisibleItems(prev => [...prev, index]);
@@ -45,7 +39,6 @@ const WorkExperience = () => {
 
   return (
     <section className="w-full py-16 px-4 md:px-12 lg:px-16">
-      {/* Section Heading with animated underline */}
       <div className={`transform transition-all duration-700 text-center mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
         <h2 className="text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] relative inline-block">
           Work Experience
@@ -53,52 +46,46 @@ const WorkExperience = () => {
         </h2>
       </div>
 
-      {/* Timeline */}
       <div className="relative max-w-3xl mx-auto">
-        {/* Center vertical line */}
         <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200"></div>
-        
+
         {timelineData.map((item, idx) => {
           const isEven = idx % 2 === 0;
-          
           return (
             <div 
               key={idx}
               className={`relative z-10 mb-16 ${visibleItems.includes(idx) ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}
               style={{ transitionDelay: `${idx * 200}ms` }}
             >
-              {/* Connector dot */}
               <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1">
                 <div className="h-4 w-4 rounded-full bg-white border-4 border-[var(--base-theme)]"></div>
               </div>
-              
-              {/* Purple accent line */}
-              {/* <div className={`absolute left-1/2 transform -translate-x-1/2 h-12 w-1 bg-purple-500 ${idx < timelineData.length - 1 ? 'block' : 'hidden'}`} style={{ top: '1.5rem' }}></div> */}
-              
-              {/* Content grid */}
+
               <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
-                {/* Date */}
                 <div className={`text-right ${isEven ? 'order-1' : 'order-1'}`}>
                   <div className="text-gray-600 font-medium">
                     {item.date}
                   </div>
                 </div>
-                
-                {/* Icon */}
+
                 <div className="flex items-center justify-center w-14 h-14 bg-[var(--base-theme)] rounded-full shadow-lg order-2">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
                 </div>
-                
-                {/* Job details */}
+
                 <div className={`${isEven ? 'order-3 text-left' : 'order-3 text-left'}`}>
                   <h3 className="text-xl font-bold text-[var(--base-theme-font-color-dark)]">
                     {item.title}
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 mb-2">
                     {item.company}
                   </p>
+                  <ul className="list-disc pl-5 text-gray-600 space-y-1">
+                    {item.description.map((desc, i) => (
+                      <li key={i}>{desc}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
@@ -106,12 +93,10 @@ const WorkExperience = () => {
         })}
       </div>
 
-      {/* Projects Section */}
       <div className="mt-24">
         <h3 className="text-2xl font-bold text-[var(--base-theme-font-color-dark)] mb-8 text-center">
          {/* Gallary of AI Projects Tested  */}
         </h3>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {itemData.map((item, index) => (
             <div 
@@ -131,8 +116,6 @@ const WorkExperience = () => {
                 <div className="p-5">
                   <h4 className="font-bold text-lg text-[var(--base-theme-font-color-dark)]">{item.author}</h4>
                   <p className="text-gray-700 font-medium">{item.title}</p>
-                  
-                  {/* Animated view project link */}
                   <div className="mt-3 flex items-center text-[var(--base-theme)] font-medium">
                     <span>View Project</span>
                     <svg 
